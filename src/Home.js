@@ -31,7 +31,7 @@ const Home = () => {
     }, [fileName, username])
 
     const getprofiles = async () => {
-        try{
+        try {
             const response = await fetch(process.env.REACT_APP_LINK_1, {
                 method: 'POST',
                 headers: {
@@ -39,7 +39,7 @@ const Home = () => {
                 },
                 body: JSON.stringify({ userId: `${username}_highseasuser123` }),
             });
-    
+
             let proFiles = []
             const data = await response.json();
             if (data.filenames) {
@@ -50,10 +50,10 @@ const Home = () => {
                 { id: '2', name: 'Time Travel: Theories and Paradoxes', filename: 'file2.txt', fullfilename: "file2_thisisforallfreeusersandprousers_byte9962-notesgpt-996200.txt" },
                 { id: '3', name: 'All About Multiverse', filename: 'file3.txt', fullfilename: "file3_thisisforallfreeusersandprousers_byte9962-notesgpt-996200.txt" },
             ]
-    
+
             setNotesList([...freeFiles, ...proFiles])
         }
-        catch (e){
+        catch (e) {
             console.log(e);
         }
     }
@@ -99,15 +99,15 @@ const Home = () => {
                     setChats([...chats, newChat, { userId: `${username}_highseasuser123`, message: "Let me think...", isUser: false, documentId: fileName }]);
                 }, 1500)
                 setQuestion('');
-        
+
                 try {
                     await axios.post(process.env.REACT_APP_LINK_3, newChat);
-        
+
                     const response = await axios.post(process.env.REACT_APP_LINK_4, {
                         question,
                         text: fileText
                     });
-        
+
                     const newAnswer = { userId: `${username}_highseasuser123`, message: response.data.answer, isUser: false, documentId: fileName };
                     setChats([...chats, newChat, newAnswer]);
                     await axios.post(process.env.REACT_APP_LINK_5, newAnswer);
@@ -196,11 +196,11 @@ const Home = () => {
         <div className="page">
             <div className="navbar">
                 <div>
-                    <h1 className="notesgpt">NotesGPT - <span style={{fontSize: "20px", fontWeight: 500}}>AI File Chat</span></h1>
+                    <h1 className="notesgpt">NotesGPT - <span style={{ fontSize: "20px", fontWeight: 500 }}>AI File Chat</span></h1>
                 </div>
                 <div style={{ display: 'flex', flexDirection: "row" }}>
-                    {usernamepresent&&(
-                    <h1 className="username">{username}</h1>
+                    {usernamepresent && (
+                        <h1 className="username">{username}</h1>
                     )}
                     <img className="profileimg" alt="profile" src={require("./assets/profile.png")} />
                 </div>
@@ -211,18 +211,23 @@ const Home = () => {
                         <div className="leftsec">
                             <div className="topbar">
                                 <h1 className="backarrow" onClick={() => { hideSidebar() }}>←</h1>
-                                {isLoading && (
-                                    <p>Loading...</p>
-                                )}
-                                <input
-                                    type="file"
-                                    ref={fileInputRef}
-                                    style={{ display: "none" }}
-                                    accept=".pdf, .txt"
-                                    onChange={handletheFileChange}
-                                />
-                                <h1 className="plusbtn" onClick={handleButtonClick}>+</h1>
+                                <div style={{display: "flex",flexDirection: "row", alignItems: 'center'}}>
+                                    {isLoading ? (
+                                        <p className="loadingText">Loading...</p>
+                                    ) : (
+                                        <p className="loadingText">Add a File</p>
+                                    )}
+                                    <input
+                                        type="file"
+                                        ref={fileInputRef}
+                                        style={{ display: "none" }}
+                                        accept=".pdf, .txt"
+                                        onChange={handletheFileChange}
+                                    />
+                                    <h1 className="plusbtn" onClick={handleButtonClick}>+</h1>
+                                </div>
                             </div>
+                            <div className="topbottombar"></div>
                             {fileTextS ? (
                                 <div className="document">
                                     <p>{fileText}</p>
@@ -238,7 +243,7 @@ const Home = () => {
                     ) : (
                         <h1 className="backarrow2" onClick={() => { showSidebar() }}>→</h1>
                     )}
-                    <div className="rightsec" style={sidebarhidden?({width: '100%'}):({width:"82%"})}>
+                    <div className="rightsec" style={sidebarhidden ? ({ width: '100%' }) : ({ width: "82%" })}>
                         <div style={{ width: '80%', alignSelf: 'center', marginTop: "30px" }}>
                             {renderChatMessages()}
                         </div>
