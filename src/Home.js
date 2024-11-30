@@ -199,7 +199,9 @@ const Home = () => {
                     <h1 className="notesgpt">NotesGPT</h1>
                 </div>
                 <div style={{ display: 'flex', flexDirection: "row" }}>
-                    <h1 className="username">DemoUser</h1>
+                    {usernamepresent&&(
+                    <h1 className="username">{username}</h1>
+                    )}
                     <img className="profileimg" alt="profile" src={require("./assets/profile.png")} />
                 </div>
             </div>
