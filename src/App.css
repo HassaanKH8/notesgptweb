@@ -1,38 +1,218 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.page {
+  height: 100vh;
+  width: 100%;
+  background-color: #efeee9;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #36454f;
+  height: 70px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.profileimg {
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 100px;
+}
+
+.username {
+  font-size: 28px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: #36454f;
+  letter-spacing: 0.5px;
+}
+
+.notesgpt {
+  font-size: 28px;
+  font-family: "EB Garamond", sans-serif;
+  font-weight: 600;
+  color: #efeee9;
+  letter-spacing: 0.5px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.bottomsection {
+  display: flex;
+  flex-direction: row;
+}
+
+.bottomsection2 {
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 70px);
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.addusername {
+  font-family: "Inter", sans-serif;
+  color: #36454f;
+  font-weight: 700;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.uinput{
+  width: 200px;
+  height: 40px;
+  border-radius: 14px;
+  border: none;
+  background-color: #d3d2cc;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.submitbtn {
+  border: none;
+  background-color: #36454f;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  color: #efeee9;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.rightsec {
+  width: 82%;
+  height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftsec {
+  display: flex;
+  flex-direction: column;
+  width: 18%;
+  height: calc(100vh - 70px);
+  padding: 10px;
+  background-color: #e1e0da;
+}
+
+.topbar {
+  display: flex;
+  width: 95%;
+  align-self: center;
+  height: 30px;
+  margin-bottom: 20px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.backarrow {
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  margin-top: 4px;
+  color: #36454f;
+  cursor: pointer;
+}
+
+.backarrow2 {
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: #36454f;
+  cursor: pointer;
+  position: absolute;
+  top: 80px;
+  left: 10px;
+}
+
+.plusbtn {
+  font-family: "Inter", sans-serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #36454f;
+  cursor: pointer;
+}
+
+.noteitem {
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  color: #36454f;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.noteitemselected{
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  color: #efeee9;
+  background-color: #36454f;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.noteitem:hover {
+  background-color: #d3d2cc;
+}
+
+.tinput {
+  background-color: #e1e0da;
+  border: none;
+  padding: 10px;
+  padding-left: 20px;
+  width: 60%;
+  height: 50px;
+  border-radius: 20px;;
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-family: "Inter", sans-serif;
+  color: #333333;
+}
+
+.sendbtn {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  bottom: 20px;
+}
+
+.document {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid rgba(74, 74, 74, 0.4);
+}
+
+.document p {
+  font-size: 14px;
+  line-height: 1.3;
+  color: #333333;
+}
+
+.logo2{
+  border-radius: 10px;
+  margin-bottom: 30px;
 }
