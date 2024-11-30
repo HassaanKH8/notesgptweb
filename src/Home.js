@@ -196,7 +196,7 @@ const Home = () => {
         <div className="page">
             <div className="navbar">
                 <div>
-                    <h1 className="notesgpt">NotesGPT</h1>
+                    <h1 className="notesgpt">NotesGPT - <span style={{fontSize: "20px", fontWeight: 500}}>AI File Chat</span></h1>
                 </div>
                 <div style={{ display: 'flex', flexDirection: "row" }}>
                     {usernamepresent&&(
