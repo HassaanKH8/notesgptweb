@@ -31,30 +31,31 @@ const Home = () => {
     }, [fileName, username])
 
     const getprofiles = async () => {
-        const response = await fetch(process.env.REACT_APP_LINK_1, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ userId: `${username}_highseasuser123` }),
-        });
-
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+        try{
+            const response = await fetch(process.env.REACT_APP_LINK_1, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userId: `${username}_highseasuser123` }),
+            });
+    
+            let proFiles = []
+            const data = await response.json();
+            if (data.filenames) {
+                proFiles = data.filenames.map((id, index) => ({ id: index + 4, name: `${id.substring(0, id.lastIndexOf('_', id.lastIndexOf('_') - 1))}${id.substring(id.lastIndexOf('.'))}`, fullfilename: `${id}` }));
+            }
+            let freeFiles = [
+                { id: '1', name: 'Nelson Mandela Biography', filename: 'file1.txt', fullfilename: "file1_thisisforallfreeusersandprousers_byte9962-notesgpt-996200.txt" },
+                { id: '2', name: 'Time Travel: Theories and Paradoxes', filename: 'file2.txt', fullfilename: "file2_thisisforallfreeusersandprousers_byte9962-notesgpt-996200.txt" },
+                { id: '3', name: 'All About Multiverse', filename: 'file3.txt', fullfilename: "file3_thisisforallfreeusersandprousers_byte9962-notesgpt-996200.txt" },
+            ]
+    
+            setNotesList([...freeFiles, ...proFiles])
         }
-        let proFiles = []
-        const data = await response.json();
-        if (data.filenames) {
-            proFiles = data.filenames.map((id, index) => ({ id: index + 4, name: `${id.substring(0, id.lastIndexOf('_', id.lastIndexOf('_') - 1))}${id.substring(id.lastIndexOf('.'))}`, fullfilename: `${id}` }));
+        catch (e){
+            console.log(e);
         }
-        let freeFiles = [
-            { id: '1', name: 'Nelson Mandela Biography', filename: 'file1.txt', fullfilename: "file1_thisisforallfreeusersandprousers_byte9962-notesgpt-996200.txt" },
-            { id: '2', name: 'Time Travel: Theories and Paradoxes', filename: 'file2.txt', fullfilename: "file2_thisisforallfreeusersandprousers_byte9962-notesgpt-996200.txt" },
-            { id: '3', name: 'All About Multiverse', filename: 'file3.txt', fullfilename: "file3_thisisforallfreeusersandprousers_byte9962-notesgpt-996200.txt" },
-        ]
-
-
-        setNotesList([...freeFiles, ...proFiles])
     }
 
 
